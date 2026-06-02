@@ -1,0 +1,9 @@
+layout {
+    pane split_direction="vertical" {
+        pane size="40%" name="docker" {
+            command "watch"
+            args "-n" "2" "docker" "ps"
+        }
+        pane size="60%"
+    }
+}

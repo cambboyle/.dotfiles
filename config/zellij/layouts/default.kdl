@@ -1,0 +1,31 @@
+layout {
+    default_tab_template {
+        children
+        pane size=1 borderless=true {
+            plugin location="file:~/.config/zellij/plugins/zjstatus.wasm" {
+                format_left   "{mode} #[fg=#89B4FA,bold]{session}"
+                format_center "{tabs}"
+                format_right  "{datetime}"
+
+                format_space  ""
+                border_enabled  "false"
+
+                mode_normal        "#[bg=#89B4FA,fg=#1e2030,bold] NORMAL "
+                mode_locked        "#[bg=#F38BA8,fg=#1e2030,bold] LOCKED "
+                mode_pane          "#[bg=#A6E3A1,fg=#1e2030,bold] PANE "
+                mode_tab           "#[bg=#F9E2AF,fg=#1e2030,bold] TAB "
+                mode_resize        "#[bg=#FAB387,fg=#1e2030,bold] RESIZE "
+                mode_scroll        "#[bg=#CBA6F7,fg=#1e2030,bold] SCROLL "
+                mode_move          "#[bg=#89DCEB,fg=#1e2030,bold] MOVE "
+                mode_session       "#[bg=#94E2D5,fg=#1e2030,bold] SESSION "
+
+                tab_normal   "#[fg=#6C7086] {name} "
+                tab_active   "#[fg=#CDD6F4,bold,italic] {name} "
+
+                datetime          "#[fg=#6C7086] {format} "
+                datetime_format   "%H:%M"
+                datetime_interval "60"
+            }
+        }
+    }
+}

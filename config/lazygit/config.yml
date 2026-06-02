@@ -1,0 +1,29 @@
+# GUI settings
+gui:
+  theme:
+    activeBorderColor:
+      - '#89B4FA'
+      - bold
+    inactiveBorderColor:
+      - '#6C7086'
+    selectedLineBgColor:
+      - '#313244'
+  showIcons: true
+  nerdFontsVersion: "3"
+  timeFormat: "02 Jan 15:04"
+  shortTimeFormat: "15:04"
+
+# Git settings
+git:
+  paging:
+    colorArg: always
+    pager: delta --dark --paging=never
+  commit:
+    signOff: false
+  branchLogCmd: "git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=medium {{branchName}} --"
+
+# Keybindings
+keybinding:
+  universal:
+    quit: 'q'
+    return: '<esc>'

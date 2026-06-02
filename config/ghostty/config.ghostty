@@ -1,0 +1,15 @@
+# aesthetics
+# theme= dark:Monokai Pro,light:Kanso Pearl
+theme= dark:0x96f,light:Ayu Light
+background-opacity = 1
+
+# typography
+font-family="JetBrainsMono Nerd Font"
+font-size=16
+font-thicken=true
+font-thicken-strength=1
+adjust-cell-height=1
+font-feature=-liga
+
+
+

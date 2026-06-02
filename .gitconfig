@@ -1,0 +1,45 @@
+[color]
+	ui = auto
+[user]
+	name = Cameron Boyle
+	email = cambboyle@gmail.com
+[credential]
+	helper = osxkeychain
+[init]
+	defaultBranch = main
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[core]
+	compression = 9
+	whitespace = error
+	preloadindex = true
+	excludesfile = /Users/cameronboyle/.gitignore_global
+[advice]
+	addEmptyPathspec = false
+	pushNonFastForward = false
+	statusHints = false
+[status]
+	branch = true
+	showStash = true
+	showUntrackedFiles = all
+
+
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[commit]
+	template = /Users/cambboyle/.stCommitMsg
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+
+[includeIf "gitdir:~/Projects/"]
+    path = ~/.gitconfig-work

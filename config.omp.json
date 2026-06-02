@@ -1,0 +1,93 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "version": 4,
+  "final_space": false,
+  "console_title_template": "{{ if or .Root .Segments.Git.RepoName }}[ {{ if .Root }}Admin{{ end }}{{ if and .Root .Segments.Git.RepoName }}@{{ end }}{{ if .Segments.Git.RepoName }}{{ .Segments.Git.RepoName }}{{ end }} ]{{ end }} {{ .Folder }}",
+  "blocks": [
+    {
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "background": "p:background-color",
+          "foreground": "p:cloud-text-amazon",
+          "options": {
+            "folder_separator_icon": "/",
+            "style": "folder"
+          },
+          "style": "plain",
+          "powerline_symbol": "\ue0b4",
+          "template": "\ue5ff {{ path .Path .Location }} ",
+          "type": "path"
+        },
+        {
+          "background": "p:background-color",
+          "foreground": "p:git-text",
+          "options": {
+            "fetch_status": true
+          },
+          "style": "plain",
+          "powerline_symbol": "\ue0b4",
+          "template": "{{ .HEAD }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if gt .StashCount 0 }} \ueb4b {{ .StashCount }}{{ end }} ",
+          "type": "git"
+        },
+        {
+          "type": "executiontime",
+          "style": "diamond",
+          "powerline_symbol": "\ue0b0",
+          "template": " \uf252 {{ .FormattedMs }} ",
+          "foreground": "p:talosctl-text",
+          "background": "p:background-color",
+          "leading_diamond": "\ue0b3"
+        }
+      ],
+      "type": "prompt"
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "type": "shell",
+          "style": "plain",
+          "powerline_symbol": "\ue0b4",
+          "template": " \ue795 {{ .Name }} ",
+          "cache": {
+            "duration": "24h",
+            "strategy": "session"
+          },
+          "foreground": "p:error-background",
+          "background": "p:background-color"
+        }
+      ],
+      "newline": true
+    },
+    {
+      "type": "rprompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "type": "time",
+          "style": "plain",
+          "powerline_symbol": "\ue0b0",
+          "template": " \uf017 {{ .CurrentDate | date .Format }} ",
+          "foreground": "#dd0033"
+        }
+      ]
+    }
+  ],
+  "palette": {
+    "background-color": "transparent",
+    "cloud-text-amazon": "#4285F4",
+    "cloud-text-azure": "#4285F4",
+    "cloud-text-gcp": "#4285F4",
+    "cloud-text-firebase": "#FFA000",
+    "error-background": "#dd0033",
+    "error-text": "#242424",
+    "git-text": "#64c655",
+    "kubernetes-text": "#FFBB00",
+    "talosctl-text": "#FF6C00",
+    "symbol-color": "#ffffff",
+    "timer-text": "#dd0033"
+  }
+}
