@@ -21,4 +21,10 @@ tmux send-keys -t dev:btop 'btop' Enter
 
 tmux new-window -t dev -n aws
 
+# AFK window — split into cmatrix and genact
+tmux new-window -t dev -n afk
+tmux split-window -t dev:afk -h -p 50
+tmux send-keys -t dev:afk.1 'cmatrix -C white' Enter
+tmux send-keys -t dev:afk.2 'genact' Enter
+
 tmux select-window -t dev:shell
