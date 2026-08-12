@@ -3,6 +3,8 @@
 # =============================================================================
 
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="${PATH}:${GHOSTTY_BIN_DIR}"
+export PATH="/Applications/Ghostty.app/Contents/MacOS:$PATH"
 
 # =============================================================================
 # HOMEBREW
@@ -92,8 +94,14 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 # ALIASES — GENERAL
 # =============================================================================
 
-alias ls='ls --color'
+# alias ls='ls --color'
 alias c='clear'
+export BAT_THEME="gruvbox-dark"
+alias cat='bat --paging=never'
+alias ls='eza --icons --group-directories-first'
+alias ll='eza --icons --group-directories-first --long --header'
+alias la='eza --icons --group-directories-first --long --header --all'
+alias lt='eza --icons --group-directories-first --tree --level=2'
 
 # =============================================================================
 # ALIASES — MISC
@@ -106,9 +114,17 @@ alias zdocker='zellij --layout ~/.config/zellij/layouts/docker.kdl'
 # SHELL INTEGRATIONS
 # =============================================================================
 
-eval "$(fzf --zsh)" 
-eval "$(zoxide init zsh)" 
-eval "$(oh-my-posh init zsh --config ~/config.omp.json)" 
+export FZF_DEFAULT_OPTS="
+--color=fg:#ebdbb2,bg:#1d2021,hl:#fabd2f
+--color=fg+:#ebdbb2,bg+:#3c3836,hl+:#fabd2f
+--color=info:#83a598,prompt:#b8bb26,pointer:#fb4934
+--color=marker:#fe8019,spinner:#d3869b,header:#928374
+--color=border:#3c3836,gutter:#1d2021
+"
+eval "$(fzf --zsh)"
+eval "$(zoxide init zsh)"
+# eval "$(oh-my-posh init zsh --config ~/config.omp.json)"
+eval "$(starship init zsh)"
 
 # Load private/local config
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local

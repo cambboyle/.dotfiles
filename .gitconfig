@@ -2,7 +2,7 @@
 	ui = auto
 [user]
 	name = Cameron Boyle
-	email = cambboyle@gmail.com
+	email = cameron.boyle@novira.tech
 [credential]
 	helper = osxkeychain
 [init]

@@ -1,6 +1,8 @@
 # aesthetics
 # theme= dark:Monokai Pro,light:Kanso Pearl
 theme= dark:0x96f,light:Ayu Light
+# theme= dark:Github Dark, light: Github
+# theme= dark:Gruvbox Dark Hard, light: Gruvbox Light Hard
 background-opacity = 1
 
 # typography

@@ -22,6 +22,15 @@ tmux select-pane -t "$PROJECT_NAME:shell.1"
 tmux new-window -t "$PROJECT_NAME" -n lazygit -c "$PROJECT_PATH"
 tmux send-keys -t "$PROJECT_NAME:lazygit" 'lazygit' Enter
 
+# Lazydocker window for RPB
+if [ "$PROJECT_NAME" = "reusables-backend" ]; then
+  tmux new-window -t "$PROJECT_NAME" -n lazydocker -c "$PROJECT_PATH"
+  tmux send-keys -t "$PROJECT_NAME:lazydocker" 'lazydocker' Enter
+
+  # Bruno window — empty shell in ~/Desktop/bruno
+  tmux new-window -t "$PROJECT_NAME" -n bruno -c "$HOME/Desktop/bruno"
+fi
+
 # Switch to shell window
 tmux select-window -t "$PROJECT_NAME:shell"
 tmux switch-client -t "$PROJECT_NAME"
