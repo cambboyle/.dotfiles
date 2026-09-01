@@ -1,0 +1,73 @@
+# Themed by apply-starship-theme.py from the active family's palette --
+# this file is generated, edits here get overwritten on the next theme
+# switch. Change the source template at
+# ~/.dotfiles/config/starship/starship.toml.tpl instead.
+#
+# Layout inspired by the Jetpack preset: directory pinned left, everything
+# else pushed to the right edge via $fill, prompt input on its own line.
+"$schema" = 'https://starship.rs/config-schema.json'
+
+add_newline = true
+
+format = """
+$directory\
+$fill\
+$git_branch\
+$git_status\
+$aws\
+$cmd_duration\
+$hostname\
+$line_break\
+$character"""
+
+[fill]
+symbol = " "
+
+[character]
+success_symbol = "[❯](bold #bde3b0)"
+error_symbol = "[❯](bold #f2a7b2)"
+vimcmd_symbol = "[❮](bold #f4e3c1)"
+
+[directory]
+style = "bold #a5ded6"
+truncation_length = 0
+truncate_to_repo = false
+format = "[$path]($style)[$read_only]($read_only_style) "
+read_only = " 󰌾"
+read_only_style = "#f2a7b2"
+
+[git_branch]
+symbol = " "
+style = "bold #f493da"
+format = "[$symbol$branch]($style) "
+
+[git_status]
+style = "#eeae9a"
+format = "([$all_status$ahead_behind]($style)) "
+conflicted = ""
+ahead = "⇡${count}"
+behind = "⇣${count}"
+diverged = "⇕⇡${a}⇣${b}"
+untracked = "?${count}"
+stashed = "*${count}"
+modified = "!${count}"
+staged = "+${count}"
+renamed = "»${count}"
+deleted = "✘${count}"
+
+[cmd_duration]
+min_time = 2000
+style = "#5b6078"
+format = "took [$duration]($style) "
+
+[hostname]
+ssh_only = true
+style = "bold #adc5f7"
+format = "[$hostname]($style) "
+trim_at = "."
+
+[aws]
+symbol = "  "
+style = "bold #f4e3c1"
+format = '[$symbol($profile )]($style)'
+disabled = false

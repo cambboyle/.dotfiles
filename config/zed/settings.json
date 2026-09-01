@@ -1,0 +1,102 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "vim_mode": false,
+  "cursor_shape": "bar",
+  "cursor_blink": false,
+  "colorize_brackets": true,
+  "sticky_scroll": {
+    "enabled": true
+  },
+  "ui_font_family": "JetBrainsMonoNL Nerd Font",
+  "buffer_font_weight": 300.0,
+  "diff_view_style": "split",
+  "agent_servers": {
+    "claude-acp": {
+      "default_config_options": {
+        "mode": "acceptEdits",
+        "fast": false,
+        "model": "sonnet"
+      },
+      "type": "registry"
+    },
+    "github-copilot-cli": {
+      "type": "registry"
+    }
+  },
+  "buffer_font_family": "JetBrainsMonoNL Nerd Font",
+  "cli_default_open_behavior": "new_window",
+  "outline_panel": {
+    "dock": "left"
+  },
+  "collaboration_panel": {
+    "dock": "left"
+  },
+  "git_panel": {
+    "dock": "left"
+  },
+  "format_on_save": "on",
+  "prettier": {
+    "allowed": true,
+  },
+  "agent": {
+    "tool_permissions": {
+      "tools": {
+        "terminal": {
+          "always_allow": [
+            {
+              "pattern": "^curl\\b"
+            },
+            {
+              "pattern": "^printf\\b"
+            }
+          ]
+        }
+      }
+    },
+    "dock": "right",
+    "default_profile": "ask",
+    "default_model": {
+      "provider": "copilot_chat",
+      "model": "gpt-5-mini",
+      "enable_thinking": true,
+      "effort": "high",
+    },
+    "favorite_models": [],
+    "model_parameters": [],
+  },
+  "icon_theme": {
+    "mode": "system",
+    "light": "Modern Icons (Light)",
+    "dark": "Modern Icons (Dark)"
+  },
+  "title_bar": {
+    "show_branch_status_icon": true,
+    "show_menus": false,
+  },
+  "status_bar": {
+    "show_active_file": true,
+    "active_language_button": true,
+  },
+  "project_panel": {
+    "dock": "left",
+    "button": true,
+  },
+  "edit_predictions": {
+    "mode": "subtle",
+    "provider": "zed",
+  },
+  "ui_font_size": 15.0,
+  "buffer_font_size": 14.0,
+  "theme": {
+    "mode": "system",
+    "light": "Gruvbox Light",
+    "dark": "Gruvbox Dark",
+  },
+}

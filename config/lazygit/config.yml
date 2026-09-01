@@ -1,13 +1,40 @@
 # GUI settings
+#
+# Theme uses ANSI palette slots + `default` + `reverse` instead of hex, so all
+# colors are supplied by whatever Ghostty theme is active. Light/dark follows
+# the terminal automatically — nothing here needs to change.
+#   default  = terminal's own fg/bg
+#   reverse  = swaps fg/bg, so a highlight is always readable in either mode
 gui:
   theme:
     activeBorderColor:
-      - '#89B4FA'
+      - blue
       - bold
     inactiveBorderColor:
-      - '#6C7086'
+      - default
+    searchingActiveBorderColor:
+      - cyan
+      - bold
+    optionsTextColor:
+      - blue
+    # `reverse` instead of a fixed bg: the selection inverts against the
+    # current background, so it reads correctly on Ayu Light and 0x96f alike.
     selectedLineBgColor:
-      - '#313244'
+      - reverse
+    inactiveViewSelectedLineBgColor:
+      - bold
+    cherryPickedCommitFgColor:
+      - blue
+    cherryPickedCommitBgColor:
+      - cyan
+    markedBaseCommitFgColor:
+      - blue
+    markedBaseCommitBgColor:
+      - yellow
+    unstagedChangesColor:
+      - red
+    defaultFgColor:
+      - default
   showIcons: true
   nerdFontsVersion: "3"
   timeFormat: "02 Jan 15:04"
@@ -17,7 +44,8 @@ gui:
 git:
   paging:
     colorArg: always
-    pager: delta --dark --paging=never
+    # Wrapper picks delta --light / --dark from the macOS appearance setting.
+    pager: ~/.config/lazygit/delta-auto
   commit:
     signOff: false
   branchLogCmd: "git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=medium {{branchName}} --"

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://www.raycast.com/schemas/extension.json",
+  "name": "theme-switcher",
+  "title": "Theme Switcher",
+  "description": "Switch your rice (Gruvbox/Nord/Tokyo Night/Catppuccin/Kanagawa/Everforest/Rose Pine/Zedokai/Ayu/Kanso) across Ghostty, Zed, borders, and wallpaper, with a full live preview as you browse. Cmd+Shift+W on any theme to change its wallpaper (5-6 per mode); from there, Cmd+Shift+D pulls in more from Wallhaven and Cmd+Shift+A adds your own (file or URL).",
+  "icon": "icon.png",
+  "author": "cameronboyle",
+  "platforms": ["macOS"],
+  "categories": ["Applications", "Productivity"],
+  "license": "MIT",
+  "commands": [
+    {
+      "name": "switch-theme",
+      "title": "Switch Theme",
+      "description": "Pick a theme family with a live preview; Cmd+Shift+W to change its wallpaper",
+      "mode": "view"
+    }
+  ],
+  "dependencies": {
+    "@raycast/api": "latest",
+    "@raycast/utils": "latest"
+  },
+  "devDependencies": {
+    "@types/node": "latest",
+    "@types/react": "latest",
+    "typescript": "latest"
+  },
+  "scripts": {
+    "build": "ray build",
+    "dev": "ray develop"
+  }
+}

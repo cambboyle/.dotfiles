@@ -1,0 +1,14 @@
+#!/bin/bash
+# JankyBorders — outlines the focused window so it's obvious which pane
+# has focus under BSP tiling. No screen-space reservation (unlike
+# sketchybar's external_bar), so no flicker risk from this.
+
+options=(
+	style=round
+	width=6.0
+	hidpi=off
+	active_color=0xffcba6f7
+	inactive_color=0xff6c7086
+)
+
+borders "${options[@]}"

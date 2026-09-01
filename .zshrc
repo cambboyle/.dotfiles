@@ -128,3 +128,4 @@ eval "$(starship init zsh)"
 
 # Load private/local config
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
+export PATH="/opt/homebrew/opt/postgresql@18/bin:$PATH"

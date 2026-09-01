@@ -1,0 +1,55 @@
+#!/usr/bin/env sh
+
+# yabai config — real BSP auto-tiling. No scripting addition / SIP change:
+# tiling, warp/swap/resize, rules, mouse all work fine without it.
+
+yabai -m config layout                     bsp
+yabai -m config window_placement           second_child
+yabai -m config auto_balance               off
+yabai -m config split_ratio                0.5
+
+# spacing
+yabai -m config top_padding                12
+yabai -m config bottom_padding             12
+yabai -m config left_padding               12
+yabai -m config right_padding              12
+yabai -m config window_gap                 10
+
+# mouse support
+yabai -m config mouse_modifier             fn
+yabai -m config mouse_action1              move
+yabai -m config mouse_action2              resize
+yabai -m config mouse_drop_action          swap
+yabai -m config focus_follows_mouse        off
+yabai -m config mouse_follows_focus        off
+
+# -- app -> space assignment --
+# Verify these app names match your machine first:
+#   yabai -m query --windows | jq -r '.[].app' | sort -u
+yabai -m rule --add app="^Ghostty$"       space=1
+yabai -m rule --add app="^Zed$"           space=1
+yabai -m rule --add app="^Zen$"           space=2
+yabai -m rule --add label=comms app="^(Slack|Mail)$" space=3   # re-targeted to 6 when that monitor is up, see scripts/comms-space.sh
+yabai -m rule --add app="^DataGrip$"      space=4
+yabai -m rule --add app="^Sequel Ace$"    space=4
+yabai -m rule --add app="^Bruno$"         space=4
+yabai -m rule --add app="^OrbStack$"      space=4
+
+# -- float / don't tile --
+yabai -m rule --add app="^OrbStack$"             manage=off   # small dashboard window
+yabai -m rule --add app="^Obsidian$"             manage=off   # kept as a floating reference panel
+yabai -m rule --add app="^System Settings$"      manage=off
+yabai -m rule --add app="^System Preferences$"   manage=off
+yabai -m rule --add app="^Calculator$"           manage=off
+yabai -m rule --add app="^Archive Utility$"      manage=off
+yabai -m rule --add app="^App Store$"            manage=off
+yabai -m rule --add app="^Software Update$"      manage=off
+yabai -m rule --add app="^Activity Monitor$"     manage=off
+yabai -m rule --add app="^Finder$"               manage=off
+
+
+# -- comms space follows the second external monitor when it's connected --
+yabai -m signal --add event=display_added   action="$HOME/.config/yabai/scripts/comms-space.sh"
+yabai -m signal --add event=display_removed action="$HOME/.config/yabai/scripts/comms-space.sh"
+
+echo "yabai config loaded ($(date))"

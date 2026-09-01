@@ -1,0 +1,13 @@
+#!/bin/sh
+# Pager wrapper for lazygit: picks delta's light or dark syntax theme to match
+# the current macOS appearance, which is the same signal Ghostty uses for its
+# `theme = dark:...,light:...` setting.
+#
+# `defaults read -g AppleInterfaceStyle` prints "Dark" in dark mode and errors
+# (empty) in light mode — hence the 2>/dev/null and the default-to-light branch.
+
+if [ "$(defaults read -g AppleInterfaceStyle 2>/dev/null)" = "Dark" ]; then
+    exec delta --dark --paging=never "$@"
+else
+    exec delta --light --paging=never "$@"
+fi

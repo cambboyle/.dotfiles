@@ -1,0 +1,509 @@
+{
+  "gruvbox": {
+    "ghostty_dark": "Gruvbox Dark Hard",
+    "ghostty_light": "Gruvbox Light Hard",
+    "zed_dark": "Gruvbox Dark",
+    "zed_light": "Gruvbox Light",
+    "borders_active": "0xfffe8019",
+    "borders_inactive": "0xff504945",
+    "display_name": "Gruvbox",
+    "wallpapers_dark": [
+      "gruvbox-dark.jpg",
+      "gruvbox-dark-2.jpg",
+      "gruvbox-dark-3.jpg",
+      "gruvbox-dark-4.jpg",
+      "gruvbox-dark-5.jpg",
+      "gruvbox-dark-6.jpg"
+    ],
+    "wallpapers_light": [
+      "gruvbox-light.png",
+      "gruvbox-light-2.jpg",
+      "gruvbox-light-3.jpg",
+      "gruvbox-light-4.jpg",
+      "gruvbox-light-5.jpg",
+      "gruvbox-light-6.jpg"
+    ]
+  },
+  "nord": {
+    "ghostty_dark": "Nord",
+    "ghostty_light": "Nord Light",
+    "zed_dark": "Nord Dark",
+    "zed_light": "Nord Light",
+    "borders_active": "0xff88c0d0",
+    "borders_inactive": "0xff4c566a",
+    "display_name": "Nord",
+    "wallpapers_dark": [
+      "nord-dark.jpg",
+      "nord-dark-2.jpg",
+      "nord-dark-3.jpg",
+      "nord-dark-4.jpg",
+      "nord-dark-5.jpg",
+      "nord-dark-6.jpg"
+    ],
+    "wallpapers_light": [
+      "nord-light.png",
+      "nord-light-2.jpg",
+      "nord-light-3.jpg",
+      "nord-light-4.jpg",
+      "nord-light-5.jpg",
+      "nord-light-6.jpg"
+    ]
+  },
+  "tokyonight": {
+    "ghostty_dark": "TokyoNight",
+    "ghostty_light": "TokyoNight Day",
+    "zed_dark": "Tokyo Night",
+    "zed_light": "Tokyo Night Light",
+    "borders_active": "0xff7aa2f7",
+    "borders_inactive": "0xff414868",
+    "display_name": "Tokyo Night",
+    "wallpapers_dark": [
+      "tokyonight-dark.jpg",
+      "tokyonight-dark-2.jpg",
+      "tokyonight-dark-3.jpg",
+      "tokyonight-dark-4.jpg",
+      "tokyonight-dark-5.jpg",
+      "tokyonight-dark-6.jpg"
+    ],
+    "wallpapers_light": [
+      "tokyonight-light.png",
+      "tokyonight-light-2.jpg",
+      "tokyonight-light-3.jpg",
+      "tokyonight-light-4.jpg",
+      "tokyonight-light-5.jpg"
+    ]
+  },
+  "catppuccin": {
+    "ghostty_dark": "Catppuccin Macchiato",
+    "ghostty_light": "Catppuccin Latte",
+    "zed_dark": "Catppuccin Macchiato",
+    "zed_light": "Catppuccin Latte",
+    "borders_active": "0xffcba6f7",
+    "borders_inactive": "0xff6c7086",
+    "display_name": "Catppuccin",
+    "wallpapers_dark": [
+      "catppuccin-dark.jpg",
+      "catppuccin-dark-2.jpg",
+      "catppuccin-dark-3.jpg",
+      "catppuccin-dark-4.jpg",
+      "catppuccin-dark-5.jpg",
+      "catppuccin-dark-6.jpg"
+    ],
+    "wallpapers_light": [
+      "catppuccin-light.jpg",
+      "catppuccin-light-2.jpg",
+      "catppuccin-light-3.jpg",
+      "catppuccin-light-4.jpg",
+      "catppuccin-light-5.jpg"
+    ]
+  },
+  "kanagawa": {
+    "ghostty_dark": "Kanagawa Wave",
+    "ghostty_light": "Kanagawa Lotus",
+    "zed_dark": "Kanagawa Wave",
+    "zed_light": "Kanagawa Lotus",
+    "borders_active": "0xff7e9cd8",
+    "borders_inactive": "0xff54546d",
+    "display_name": "Kanagawa",
+    "wallpapers_dark": [
+      "kanagawa-dark.jpg",
+      "kanagawa-dark-2.jpg",
+      "kanagawa-dark-3.jpg",
+      "kanagawa-dark-4.jpg",
+      "kanagawa-dark-5.jpg",
+      "kanagawa-dark-6.jpg"
+    ],
+    "wallpapers_light": [
+      "kanagawa-light.jpg",
+      "kanagawa-light-2.jpg",
+      "kanagawa-light-3.jpg",
+      "kanagawa-light-4.jpg",
+      "kanagawa-light-5.jpg",
+      "kanagawa-light-6.jpg"
+    ]
+  },
+  "everforest": {
+    "ghostty_dark": "Everforest Dark Hard",
+    "ghostty_light": "Everforest Light Med",
+    "zed_dark": "Everforest Dark Medium (regular)",
+    "zed_light": "Everforest Light Medium (regular)",
+    "borders_active": "0xffa7c080",
+    "borders_inactive": "0xff4f5b58",
+    "display_name": "Everforest",
+    "wallpapers_dark": [
+      "everforest-dark.jpg",
+      "everforest-dark-2.jpg",
+      "everforest-dark-3.jpg",
+      "everforest-dark-4.jpg",
+      "everforest-dark-5.jpg",
+      "everforest-dark-6.jpg"
+    ],
+    "wallpapers_light": [
+      "everforest-light.jpg",
+      "everforest-light-2.jpg",
+      "everforest-light-3.jpg",
+      "everforest-light-4.jpg",
+      "everforest-light-5.jpg",
+      "everforest-light-6.jpg"
+    ]
+  },
+  "rosepine": {
+    "ghostty_dark": "Rose Pine",
+    "ghostty_light": "Rose Pine Dawn",
+    "zed_dark": "Rosé Pine",
+    "zed_light": "Rosé Pine Dawn",
+    "borders_active": "0xffc4a7e7",
+    "borders_inactive": "0xff6e6a86",
+    "display_name": "Rosé Pine",
+    "wallpapers_dark": [
+      "rosepine-dark.jpg",
+      "rosepine-dark-2.jpg",
+      "rosepine-dark-3.jpg",
+      "rosepine-dark-4.jpg",
+      "rosepine-dark-5.jpg",
+      "rosepine-dark-6.jpg"
+    ],
+    "wallpapers_light": [
+      "rosepine-light.jpg",
+      "rosepine-light-2.jpg",
+      "rosepine-light-3.jpg",
+      "rosepine-light-4.jpg",
+      "rosepine-light-5.jpg",
+      "rosepine-light-6.jpg"
+    ]
+  },
+  "zedokai": {
+    "ghostty_dark": "Monokai Pro",
+    "ghostty_light": "Monokai Pro Light",
+    "zed_dark": "Zedokai",
+    "zed_light": "Zedokai Light",
+    "borders_active": "0xffff6188",
+    "borders_inactive": "0xff49483e",
+    "display_name": "Zedokai",
+    "wallpapers_dark": [
+      "monokai-dark.jpg",
+      "zedokai-dark-2.jpg",
+      "zedokai-dark-3.jpg",
+      "zedokai-dark-4.jpg",
+      "zedokai-dark-5.jpg",
+      "zedokai-dark-6.jpg"
+    ],
+    "wallpapers_light": [
+      "monokai-light.jpg",
+      "zedokai-light-2.jpg",
+      "zedokai-light-3.jpg",
+      "zedokai-light-4.jpg",
+      "zedokai-light-5.jpg",
+      "zedokai-light-6.jpg"
+    ]
+  },
+  "ayu": {
+    "ghostty_dark": "Ayu",
+    "ghostty_light": "Ayu Light",
+    "zed_dark": "Ayu Dark",
+    "zed_light": "Ayu Light",
+    "borders_active": "0xffffb454",
+    "borders_inactive": "0xff565b66",
+    "display_name": "Ayu",
+    "wallpapers_dark": [
+      "ayu-dark.jpg",
+      "ayu-dark-2.jpg",
+      "ayu-dark-3.jpg",
+      "ayu-dark-4.jpg",
+      "ayu-dark-5.jpg",
+      "ayu-dark-6.jpg"
+    ],
+    "wallpapers_light": [
+      "ayu-light.jpg",
+      "ayu-light-2.jpg",
+      "ayu-light-3.jpg",
+      "ayu-light-4.jpg",
+      "ayu-light-5.jpg",
+      "ayu-light-6.jpg"
+    ]
+  },
+  "kanso": {
+    "ghostty_dark": "Kanso Ink",
+    "ghostty_light": "Kanso Pearl",
+    "zed_dark": "Kanso Ink",
+    "zed_light": "Kanso Pearl",
+    "borders_active": "0xffc34043",
+    "borders_inactive": "0xff6a6a6a",
+    "display_name": "Kanso",
+    "wallpapers_dark": [
+      "kanso-dark.jpg",
+      "kanso-dark-2.jpg",
+      "kanso-dark-3.jpg",
+      "kanso-dark-4.jpg",
+      "kanso-dark-5.jpg",
+      "kanso-dark-6.jpg"
+    ],
+    "wallpapers_light": [
+      "kanso-light.jpg",
+      "kanso-light-2.jpg",
+      "kanso-light-3.jpg",
+      "kanso-light-4.jpg",
+      "kanso-light-5.jpg",
+      "kanso-light-6.jpg"
+    ]
+  },
+  "miasma": {
+    "ghostty_dark": "Miasma",
+    "ghostty_light": "Miasma",
+    "zed_dark": "Miasma",
+    "zed_light": "Miasma",
+    "borders_active": "0xff78824b",
+    "borders_inactive": "0xff666666",
+    "display_name": "Miasma",
+    "wallpapers_dark": [
+      "miasma-dark.jpg",
+      "miasma-dark-2.jpg"
+    ],
+    "wallpapers_light": [
+      "miasma-dark.jpg",
+      "miasma-dark-2.jpg"
+    ]
+  },
+  "lupine": {
+    "ghostty_dark": "Lupine",
+    "ghostty_light": "Lupine",
+    "zed_dark": "Lupine",
+    "zed_light": "Lupine",
+    "borders_active": "0xff3264eb",
+    "borders_inactive": "0xff9e9e9e",
+    "display_name": "Lupine",
+    "wallpapers_dark": [
+      "lupine-light.jpg",
+      "lupine-light-2.jpg",
+      "lupine-light-3.jpg",
+      "lupine-light-4.jpg",
+      "lupine-light-5.jpg"
+    ],
+    "wallpapers_light": [
+      "lupine-light.jpg",
+      "lupine-light-2.jpg",
+      "lupine-light-3.jpg",
+      "lupine-light-4.jpg",
+      "lupine-light-5.jpg"
+    ]
+  },
+  "hackerman": {
+    "ghostty_dark": "Hackerman",
+    "ghostty_light": "Hackerman",
+    "zed_dark": "Hackerman",
+    "zed_light": "Hackerman",
+    "borders_active": "0xff82fb9c",
+    "borders_inactive": "0xff2d3450",
+    "display_name": "Hackerman",
+    "wallpapers_dark": [
+      "hackerman-dark.jpg",
+      "hackerman-dark-2.jpg"
+    ],
+    "wallpapers_light": [
+      "hackerman-dark.jpg",
+      "hackerman-dark-2.jpg"
+    ]
+  },
+  "lumon": {
+    "ghostty_dark": "Lumon",
+    "ghostty_light": "Lumon",
+    "zed_dark": "Lumon",
+    "zed_light": "Lumon",
+    "borders_active": "0xff8bc9eb",
+    "borders_inactive": "0xff304860",
+    "display_name": "Lumon",
+    "wallpapers_dark": [
+      "lumon-dark.jpg",
+      "lumon-dark-2.jpg"
+    ],
+    "wallpapers_light": [
+      "lumon-dark.jpg",
+      "lumon-dark-2.jpg"
+    ]
+  },
+  "lasthorizon": {
+    "ghostty_dark": "Last Horizon",
+    "ghostty_light": "Last Horizon",
+    "zed_dark": "Last Horizon",
+    "zed_light": "Last Horizon",
+    "borders_active": "0xffb59790",
+    "borders_inactive": "0xff584e51",
+    "display_name": "Last Horizon",
+    "wallpapers_dark": [
+      "lasthorizon-dark.jpg",
+      "lasthorizon-dark-2.jpg",
+      "lasthorizon-dark-3.jpg",
+      "lasthorizon-dark-4.jpg"
+    ],
+    "wallpapers_light": [
+      "lasthorizon-dark.jpg",
+      "lasthorizon-dark-2.jpg",
+      "lasthorizon-dark-3.jpg",
+      "lasthorizon-dark-4.jpg"
+    ]
+  },
+  "osakajade": {
+    "ghostty_dark": "Osaka Jade",
+    "ghostty_light": "Osaka Jade",
+    "zed_dark": "Osaka Jade",
+    "zed_light": "Osaka Jade",
+    "borders_active": "0xff509475",
+    "borders_inactive": "0xff53685b",
+    "display_name": "Osaka Jade",
+    "wallpapers_dark": [
+      "osakajade-dark.jpg",
+      "osakajade-dark-2.jpg",
+      "osakajade-dark-3.jpg"
+    ],
+    "wallpapers_light": [
+      "osakajade-dark.jpg",
+      "osakajade-dark-2.jpg",
+      "osakajade-dark-3.jpg"
+    ]
+  },
+  "ristretto": {
+    "ghostty_dark": "Ristretto",
+    "ghostty_light": "Ristretto",
+    "zed_dark": "Ristretto",
+    "zed_light": "Ristretto",
+    "borders_active": "0xfff38d70",
+    "borders_inactive": "0xff72696a",
+    "display_name": "Ristretto",
+    "wallpapers_dark": [
+      "ristretto-dark.jpg",
+      "ristretto-dark-2.jpg",
+      "ristretto-dark-3.jpg",
+      "ristretto-dark-4.jpg"
+    ],
+    "wallpapers_light": [
+      "ristretto-dark.jpg",
+      "ristretto-dark-2.jpg",
+      "ristretto-dark-3.jpg",
+      "ristretto-dark-4.jpg"
+    ]
+  },
+  "vantablack": {
+    "ghostty_dark": "Vantablack",
+    "ghostty_light": "Vantablack",
+    "zed_dark": "Vantablack",
+    "zed_light": "Vantablack",
+    "borders_active": "0xff8d8d8d",
+    "borders_inactive": "0xff7a7a7a",
+    "display_name": "Vantablack",
+    "wallpapers_dark": [
+      "vantablack-dark.jpg",
+      "vantablack-dark-2.jpg",
+      "vantablack-dark-3.jpg",
+      "vantablack-dark-4.jpg"
+    ],
+    "wallpapers_light": [
+      "vantablack-dark.jpg",
+      "vantablack-dark-2.jpg",
+      "vantablack-dark-3.jpg",
+      "vantablack-dark-4.jpg"
+    ]
+  },
+  "solitude": {
+    "ghostty_dark": "Solitude",
+    "ghostty_light": "Solitude",
+    "zed_dark": "Solitude",
+    "zed_light": "Solitude",
+    "borders_active": "0xff798186",
+    "borders_inactive": "0xff4b4e55",
+    "display_name": "Solitude",
+    "wallpapers_dark": [
+      "solitude-dark.jpg",
+      "solitude-dark-2.jpg",
+      "solitude-dark-3.jpg",
+      "solitude-dark-4.jpg",
+      "solitude-dark-5.jpg"
+    ],
+    "wallpapers_light": [
+      "solitude-dark.jpg",
+      "solitude-dark-2.jpg",
+      "solitude-dark-3.jpg",
+      "solitude-dark-4.jpg",
+      "solitude-dark-5.jpg"
+    ]
+  },
+  "retro82": {
+    "ghostty_dark": "Retro 82",
+    "ghostty_light": "Retro 82",
+    "zed_dark": "Retro 82",
+    "zed_light": "Retro 82",
+    "borders_active": "0xfffaa968",
+    "borders_inactive": "0xff2a6b78",
+    "display_name": "Retro 82",
+    "wallpapers_dark": [
+      "retro82-dark.jpg",
+      "retro82-dark-2.jpg",
+      "retro82-dark-3.jpg",
+      "retro82-dark-4.jpg",
+      "retro82-dark-5.jpg",
+      "retro82-dark-6.jpg",
+      "retro82-dark-7.jpg",
+      "retro82-dark-8.jpg"
+    ],
+    "wallpapers_light": [
+      "retro82-dark.jpg",
+      "retro82-dark-2.jpg",
+      "retro82-dark-3.jpg",
+      "retro82-dark-4.jpg",
+      "retro82-dark-5.jpg",
+      "retro82-dark-6.jpg",
+      "retro82-dark-7.jpg",
+      "retro82-dark-8.jpg"
+    ]
+  },
+  "ethereal": {
+    "ghostty_dark": "Ethereal",
+    "ghostty_light": "Ethereal",
+    "zed_dark": "Ethereal",
+    "zed_light": "Ethereal",
+    "borders_active": "0xff7d82d9",
+    "borders_inactive": "0xff6d7db6",
+    "display_name": "Ethereal",
+    "wallpapers_dark": [
+      "ethereal-dark.jpg",
+      "ethereal-dark-2.jpg"
+    ],
+    "wallpapers_light": [
+      "ethereal-dark.jpg",
+      "ethereal-dark-2.jpg"
+    ]
+  },
+  "matteblack": {
+    "ghostty_dark": "Matte Black",
+    "ghostty_light": "Matte Black",
+    "zed_dark": "Matte Black",
+    "zed_light": "Matte Black",
+    "borders_active": "0xffe68e0d",
+    "borders_inactive": "0xff333333",
+    "display_name": "Matte Black",
+    "wallpapers_dark": [
+      "matteblack-dark.jpg",
+      "matteblack-dark-2.jpg",
+      "matteblack-dark-3.jpg"
+    ],
+    "wallpapers_light": [
+      "matteblack-dark.jpg",
+      "matteblack-dark-2.jpg",
+      "matteblack-dark-3.jpg"
+    ]
+  },
+  "flexoki": {
+    "ghostty_dark": "Flexoki Light",
+    "ghostty_light": "Flexoki Light",
+    "zed_dark": "Flexoki Light",
+    "zed_light": "Flexoki Light",
+    "borders_active": "0xff205ea6",
+    "borders_inactive": "0xffb7b5ac",
+    "display_name": "Flexoki Light",
+    "wallpapers_dark": [
+      "flexoki-light.jpg"
+    ],
+    "wallpapers_light": [
+      "flexoki-light.jpg"
+    ]
+  }
+}
