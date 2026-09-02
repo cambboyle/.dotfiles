@@ -213,7 +213,17 @@ local DEDICATED = {
 local family = current_family()
 local mode = current_mode()
 
-local dedicated_fn = DEDICATED[family]
+-- Split light/dark families (e.g. "gruvbox-dark", from separating the
+-- original 10 paired families into independent fixed-mode entries) map to
+-- the same dedicated colorscheme as their base name ("gruvbox") --
+-- DEDICATED below is keyed by base family, not the split entry name, so
+-- strip a trailing "-dark"/"-light" before looking it up there. The
+-- families.json palette lookup further down uses the raw, unstripped
+-- `family` value instead, since families.json itself has a real entry
+-- under the split name directly.
+local dedicated_family = family:gsub("%-dark$", ""):gsub("%-light$", "")
+
+local dedicated_fn = DEDICATED[dedicated_family]
 local dedicated = dedicated_fn and dedicated_fn(mode) or nil
 
 if dedicated then

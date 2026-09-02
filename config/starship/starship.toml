@@ -24,25 +24,25 @@ $character"""
 symbol = " "
 
 [character]
-success_symbol = "[❯](bold #bde3b0)"
-error_symbol = "[❯](bold #f2a7b2)"
-vimcmd_symbol = "[❮](bold #f4e3c1)"
+success_symbol = "[❯](bold #b6b6b6)"
+error_symbol = "[❯](bold #a4a4a4)"
+vimcmd_symbol = "[❮](bold #cecece)"
 
 [directory]
-style = "bold #a5ded6"
+style = "bold #b0b0b0"
 truncation_length = 0
 truncate_to_repo = false
 format = "[$path]($style)[$read_only]($read_only_style) "
 read_only = " 󰌾"
-read_only_style = "#f2a7b2"
+read_only_style = "#a4a4a4"
 
 [git_branch]
 symbol = " "
-style = "bold #f493da"
+style = "bold #9b9b9b"
 format = "[$symbol$branch]($style) "
 
 [git_status]
-style = "#eeae9a"
+style = "#b9b9b9"
 format = "([$all_status$ahead_behind]($style)) "
 conflicted = ""
 ahead = "⇡${count}"
@@ -57,17 +57,17 @@ deleted = "✘${count}"
 
 [cmd_duration]
 min_time = 2000
-style = "#5b6078"
+style = "#505050"
 format = "took [$duration]($style) "
 
 [hostname]
 ssh_only = true
-style = "bold #adc5f7"
+style = "bold #8d8d8d"
 format = "[$hostname]($style) "
 trim_at = "."
 
 [aws]
 symbol = "  "
-style = "bold #f4e3c1"
+style = "bold #cecece"
 format = '[$symbol($profile )]($style)'
 disabled = false

@@ -23,6 +23,12 @@ interface FamilyEntry {
   wallpapers_dark: string[];
   wallpapers_light: string[];
   display_name: string;
+  // Set on every entry now (light/dark split families included -- each
+  // split half is its own fixed-mode entry) so its row always renders and
+  // switches using its OWN mode, not whatever macOS happens to be on right
+  // now. Falls back to the system-observed `mode` below only if somehow
+  // absent.
+  single_mode?: "dark" | "light";
 }
 
 function getCurrentMode(): "dark" | "light" {
@@ -106,9 +112,10 @@ export default function Command() {
   return (
     <List isShowingDetail searchBarPlaceholder="Search themes..." onSelectionChange={handleSelectionChange}>
       {Object.entries(families).map(([key, entry]) => {
-        const wallpapers = mode === "dark" ? entry.wallpapers_dark : entry.wallpapers_light;
+        const entryMode = entry.single_mode ?? mode;
+        const wallpapers = entryMode === "dark" ? entry.wallpapers_dark : entry.wallpapers_light;
         const wallpaper = wallpapers?.[0];
-        const ghosttyName = mode === "dark" ? entry.ghostty_dark : entry.ghostty_light;
+        const ghosttyName = entryMode === "dark" ? entry.ghostty_dark : entry.ghostty_light;
         return (
           <List.Item
             key={key}
@@ -132,7 +139,7 @@ export default function Command() {
                         void reloadGhosttyConfig();
                       },
                     );
-                    await showHUD(`Theme: ${entry.display_name} (${mode === "dark" ? "Dark" : "Light"})`);
+                    await showHUD(`Theme: ${entry.display_name} (${entryMode === "dark" ? "Dark" : "Light"})`);
                   }}
                 />
                 <Action
@@ -146,7 +153,7 @@ export default function Command() {
                     push(
                       <WallpaperPicker
                         familyKey={key}
-                        mode={mode}
+                        mode={entryMode}
                         onCommit={() => {
                           // Picking a wallpaper in there now fully switches
                           // the theme too, so treat it exactly like this

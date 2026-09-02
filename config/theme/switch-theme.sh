@@ -63,11 +63,31 @@ borders_inactive=$(jq -r '.borders_inactive' <<<"$entry")
 mkdir -p "$STATE_DIR" "$CHOICE_DIR"
 echo "$FAMILY" > "$STATE_FILE"
 
-# Light vs dark within the family, from macOS's current appearance. Needed
-# by btop and the wallpaper pick below, so resolve it once up front.
-mode="light"
-if defaults read -g AppleInterfaceStyle >/dev/null 2>&1; then
-  mode="dark"
+# Every family entry now has a fixed single_mode (light/dark split families
+# and the naturally single-mode ones alike) -- use that directly instead of
+# reading macOS's current appearance, and then force macOS to actually
+# match it: disable "automatically switch appearance" (it would otherwise
+# silently flip you back at sunset/sunrise) and set dark/light mode
+# explicitly via System Events, which applies instantly with no restart.
+# This is what makes "the theme decides light/dark" stick, including
+# across reboots -- macOS's appearance setting persists on its own once
+# set, so there's nothing extra needed for "on launch".
+single_mode=$(jq -r '.single_mode // empty' <<<"$entry")
+if [ -n "$single_mode" ]; then
+  mode="$single_mode"
+  defaults write -g AppleInterfaceStyleSwitchesAutomatically -bool false 2>/dev/null || true
+  if [ "$mode" = "dark" ]; then
+    osascript -e 'tell application "System Events" to tell appearance preferences to set dark mode to true' >/dev/null 2>&1 || true
+  else
+    osascript -e 'tell application "System Events" to tell appearance preferences to set dark mode to false' >/dev/null 2>&1 || true
+  fi
+else
+  # Fallback for any entry that somehow has no single_mode -- read macOS's
+  # current appearance instead, same as before this was added.
+  mode="light"
+  if defaults read -g AppleInterfaceStyle >/dev/null 2>&1; then
+    mode="dark"
+  fi
 fi
 
 # -- Ghostty: replace every theme= line (active or commented-out -- past
@@ -171,23 +191,19 @@ python3 "$HOME/.config/theme/apply-btop-theme.py" "$FAMILY" "$mode"
 # so the next prompt just picks it up. --
 python3 "$HOME/.config/theme/apply-starship-theme.py" "$FAMILY" "$mode"
 
-# -- wallpaper: prefer whichever wallpaper you last picked for this
-# family+mode (Raycast "Change Wallpaper..."), falling back to the
-# first/default one in the array --
-wallpapers=$(jq -r --arg m "wallpapers_$mode" '.[$m] // [] | join("\n")' <<<"$entry")
-default_wp=$(head -n1 <<<"$wallpapers")
-choice_file="$CHOICE_DIR/${FAMILY}-${mode}"
-chosen="$default_wp"
-if [ -f "$choice_file" ]; then
-  saved=$(cat "$choice_file")
-  if grep -qxF "$saved" <<<"$wallpapers"; then
-    chosen="$saved"
-  fi
-fi
-
-if [ -n "$chosen" ] && [ -f "$WALLPAPER_DIR/$chosen" ]; then
-  osascript -e "tell application \"System Events\" to tell every desktop to set picture to \"$WALLPAPER_DIR/$chosen\"" >/dev/null 2>&1 || true
-fi
+# -- wallpaper: sync-wallpaper-all-spaces.sh resolves which wallpaper to
+# use itself (same rule as below -- prefers whichever you last picked for
+# this family+mode via Raycast "Change Wallpaper...", falling back to the
+# array's default) and applies it to every Space by briefly visiting each
+# one in turn, since macOS has no API to set wallpaper on every Space at
+# once (a prior attempt writing straight into the per-space wallpaper db
+# worked pre-Sonoma but is a dead end on any current macOS). It reads
+# $STATE_FILE, which is already updated to $FAMILY above, so it always
+# picks up the theme being switched *to*. Only wired in here (a real
+# switch) -- preview-theme.sh deliberately stays on the single quick
+# "current desktop" osascript call instead, since cycling every Space on
+# every arrow-key move while browsing themes would be far too janky.
+"$HOME/.config/theme/sync-wallpaper-all-spaces.sh" || true
 
 if [ "${THEME_SWITCH_QUIET:-0}" != "1" ]; then
   display_name=$(jq -r '.display_name' <<<"$entry")

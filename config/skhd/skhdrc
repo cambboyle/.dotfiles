@@ -48,11 +48,13 @@ f12 : $HOME/.config/skhd/scripts/scratchpad.sh
 shift + cmd - h : yabai -m window --display prev; yabai -m display --focus prev
 shift + cmd - l : yabai -m window --display next; yabai -m display --focus next
 
-# -- theming: cycle theme family (Gruvbox/Nord/Tokyo Night/Catppuccin) across
-# Ghostty + Zed + borders + wallpaper, and toggle light/dark (Umbra
-# replacement) --
+# -- theming: cycle theme family (Gruvbox Dark/Light, Nord, Tokyo Night,
+# Catppuccin, ...) across Ghostty + Zed + borders + wallpaper. Each family
+# entry now has its own fixed light/dark mode and forces macOS's actual
+# appearance to match on switch, so there's no separate light/dark toggle
+# anymore (dropped ctrl+alt+d / toggle-light-dark.sh) -- pick "X Dark" or
+# "X Light" directly instead. --
 ctrl + alt - t : $HOME/.config/theme/cycle-family.sh
-ctrl + alt - d : $HOME/.config/theme/toggle-light-dark.sh
 
 # -- layout operations --
 shift + alt - f : yabai -m window --toggle zoom-fullscreen   # fullscreen in place

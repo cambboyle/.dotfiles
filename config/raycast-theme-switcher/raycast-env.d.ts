@@ -15,10 +15,14 @@ declare type Preferences = ExtensionPreferences
 declare namespace Preferences {
   /** Preferences accessible in the `switch-theme` command */
   export type SwitchTheme = ExtensionPreferences & {}
+  /** Preferences accessible in the `sync-wallpaper` command */
+  export type SyncWallpaper = ExtensionPreferences & {}
 }
 
 declare namespace Arguments {
   /** Arguments passed to the `switch-theme` command */
   export type SwitchTheme = {}
+  /** Arguments passed to the `sync-wallpaper` command */
+  export type SyncWallpaper = {}
 }
 

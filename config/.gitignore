@@ -1,0 +1,11 @@
+# Backups the theme-switcher scripts make before editing a config in place
+# (skhdrc, families.json, etc.) -- useful as a local safety net, not meant
+# to be committed.
+*.bak
+*.bak.*
+*.stub.bak
+
+# Diagnostic log sync-wallpaper.tsx writes on every run (see
+# raycast-theme-switcher/src/sync-wallpaper.tsx) -- local-only, gets
+# overwritten each time, nothing worth tracking in git.
+theme/sync-wallpaper-error.log

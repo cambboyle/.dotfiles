@@ -14,6 +14,12 @@
       "title": "Switch Theme",
       "description": "Pick a theme family with a live preview; Cmd+Shift+W to change its wallpaper",
       "mode": "view"
+    },
+    {
+      "name": "sync-wallpaper",
+      "title": "Sync Wallpaper to All Spaces",
+      "description": "Force the current theme's wallpaper onto every Space (assign this its own hotkey in Raycast preferences)",
+      "mode": "no-view"
     }
   ],
   "dependencies": {

@@ -47,9 +47,20 @@ zed_light=$(jq -r '.zed_light' <<<"$entry")
 borders_active=$(jq -r '.borders_active' <<<"$entry")
 borders_inactive=$(jq -r '.borders_inactive' <<<"$entry")
 
-mode="light"
-if defaults read -g AppleInterfaceStyle >/dev/null 2>&1; then
-  mode="dark"
+# Use the entry's own fixed single_mode (see switch-theme.sh) when it has
+# one, same as a real switch -- but deliberately don't force macOS's actual
+# appearance here, only there: flipping the whole system light/dark on
+# every arrow-key move while browsing themes would be far too jarring.
+# Falls back to reading macOS's current appearance for any entry without a
+# single_mode.
+single_mode=$(jq -r '.single_mode // empty' <<<"$entry")
+if [ -n "$single_mode" ]; then
+  mode="$single_mode"
+else
+  mode="light"
+  if defaults read -g AppleInterfaceStyle >/dev/null 2>&1; then
+    mode="dark"
+  fi
 fi
 
 # See switch-theme.sh for why this replaces every theme= line (active or
