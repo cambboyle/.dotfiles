@@ -109,6 +109,8 @@ alias lt='eza --icons --group-directories-first --tree --level=2'
 
 alias rain='z terminal-rain/build && ./terminal-rain'
 alias zdocker='zellij --layout ~/.config/zellij/layouts/docker.kdl'
+alias claude-work="CLAUDE_CONFIG_DIR=~/.config/claude-work claude"
+alias claude-personal="CLAUDE_CONFIG_DIR=~/.config/claude-personal claude"
 
 # =============================================================================
 # SHELL INTEGRATIONS

@@ -7,8 +7,8 @@ options=(
 	style=round
 	width=6.0
 	hidpi=off
-	active_color=0xff8d8d8d
-	inactive_color=0xff7a7a7a
+	active_color=0xffa7c080
+	inactive_color=0xff4f5b58
 )
 
 borders "${options[@]}"

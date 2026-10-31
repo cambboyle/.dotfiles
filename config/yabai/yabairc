@@ -29,11 +29,18 @@ yabai -m config mouse_follows_focus        off
 yabai -m rule --add app="^Ghostty$"       space=1
 yabai -m rule --add app="^Zed$"           space=1
 yabai -m rule --add app="^Zen$"           space=2
-yabai -m rule --add label=comms app="^(Slack|Mail)$" space=3   # re-targeted to 6 when that monitor is up, see scripts/comms-space.sh
+yabai -m rule --add label=comms app="^(Slack|Mail)$" space=3   # re-targeted to 5 when that monitor is up, see scripts/comms-space.sh
 yabai -m rule --add app="^DataGrip$"      space=4
 yabai -m rule --add app="^Sequel Ace$"    space=4
 yabai -m rule --add app="^Bruno$"         space=4
 yabai -m rule --add app="^OrbStack$"      space=4
+
+# floating + pinned -- app names for zoom.us/Surfshark are best-guess,
+# verify with `yabai -m query --windows | jq -r '.[].app' | sort -u` and
+# fix here (and in scripts/enforce-spaces.sh) if they differ
+yabai -m rule --add app="^zoom\.us$"     manage=off space=3
+yabai -m rule --add app="^Spotify$"       manage=off space=2
+yabai -m rule --add app="^Surfshark$"     manage=off space=2
 
 # -- float / don't tile --
 yabai -m rule --add app="^OrbStack$"             manage=off   # small dashboard window
@@ -51,5 +58,16 @@ yabai -m rule --add app="^Finder$"               manage=off
 # -- comms space follows the second external monitor when it's connected --
 yabai -m signal --add event=display_added   action="$HOME/.config/yabai/scripts/comms-space.sh"
 yabai -m signal --add event=display_removed action="$HOME/.config/yabai/scripts/comms-space.sh"
+
+# -- re-home Slack/Zoom/Spotify/Surfshark whenever they (re)launch, in
+# case a rule loses the race against macOS's own window-creation timing
+# (see enforce-spaces.sh) --
+yabai -m signal --add event=application_launched action="$HOME/.config/yabai/scripts/enforce-spaces.sh"
+
+# -- one more pass a few seconds after yabai (re)starts, specifically to
+# catch the burst of app relaunches from macOS's "reopen windows at
+# login/wake" restore, which can beat yabai's own rules being fully
+# loaded -- see scripts/enforce-spaces.sh --
+( sleep 6 && "$HOME/.config/yabai/scripts/enforce-spaces.sh" ) &
 
 echo "yabai config loaded ($(date))"

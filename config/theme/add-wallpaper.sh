@@ -55,7 +55,15 @@ fi
 
 existing_count=$(jq -r --arg f "$FAMILY" --arg m "wallpapers_$MODE" '.[$f][$m] // [] | length' "$FAMILIES")
 next=$((existing_count + 1))
-target_name="${FAMILY}-${MODE}-${next}.jpg"
+# Split families (e.g. "everforest-dark", from separating the original 10
+# paired families into fixed-mode entries -- see families.json) already
+# have the mode baked into their key, so appending "-$MODE-" again would
+# double it ("everforest-dark-dark-N.jpg"). Strip a trailing -dark/-light
+# from FAMILY first so the filename always ends up "<base>-<mode>-N.jpg"
+# either way.
+base_name="${FAMILY%-dark}"
+base_name="${base_name%-light}"
+target_name="${base_name}-${MODE}-${next}.jpg"
 
 mkdir -p "$WALLPAPER_DIR" "$RAYCAST_ASSETS_DIR"
 

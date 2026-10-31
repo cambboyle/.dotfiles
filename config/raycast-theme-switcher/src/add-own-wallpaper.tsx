@@ -1,9 +1,11 @@
 import { ActionPanel, Action, Form, showToast, Toast, useNavigation } from "@raycast/api";
 import { useState } from "react";
 import { execFile } from "child_process";
+import { promisify } from "util";
 import { homedir } from "os";
 import path from "path";
 
+const execFileAsync = promisify(execFile);
 const ADD_WALLPAPER_SCRIPT = path.join(homedir(), ".config", "theme", "add-wallpaper.sh");
 
 interface FormValues {
@@ -12,11 +14,16 @@ interface FormValues {
 }
 
 // Pushed from the wallpaper picker's "Add Your Own Wallpaper..." action.
-// Takes either a local image (file picker) or a URL, not both -- either
-// way it's handed straight to add-wallpaper.sh, which downloads/copies,
-// normalizes with sips, and registers it into that family+mode's array
-// exactly like a Discover pick does. `onAdded` refreshes the wallpaper
-// picker's list so the new file shows up as soon as you pop back to it.
+// Takes either one or more local images (file picker, multi-select) or a
+// single URL, not both -- each file is handed to add-wallpaper.sh in turn,
+// which downloads/copies, normalizes with sips, and registers it into that
+// family+mode's array exactly like a Discover pick does. Files are added
+// ONE AT A TIME, awaited in sequence rather than fired in parallel --
+// add-wallpaper.sh does a read-modify-write of families.json (and derives
+// the next filename from the array's current length), so running several
+// at once would race and could clobber each other's edits or collide on
+// the same target filename. `onAdded` refreshes the wallpaper picker's
+// list so the new files show up as soon as you pop back to it.
 export function AddOwnWallpaper({
   familyKey,
   mode,
@@ -33,43 +40,86 @@ export function AddOwnWallpaper({
   const [fileError, setFileError] = useState<string | undefined>();
   const [urlError, setUrlError] = useState<string | undefined>();
 
-  function handleSubmit(values: FormValues) {
-    const filePath = values.file?.[0];
+  async function handleSubmit(values: FormValues) {
+    const filePaths = (values.file ?? []).filter(Boolean);
     const url = values.url?.trim();
 
     setFileError(undefined);
     setUrlError(undefined);
 
-    if (!filePath && !url) {
-      setFileError("Pick a file or paste a URL below");
+    if (filePaths.length === 0 && !url) {
+      setFileError("Pick one or more files or paste a URL below");
       return;
     }
-    if (filePath && url) {
+    if (filePaths.length > 0 && url) {
       setUrlError("Use only one of these, not both");
       return;
     }
 
-    const source = filePath || url!;
     setIsLoading(true);
 
-    execFile(ADD_WALLPAPER_SCRIPT, [familyKey, mode, source], async (error, stdout, stderr) => {
-      setIsLoading(false);
-      if (error) {
+    if (url) {
+      try {
+        const { stdout } = await execFileAsync(ADD_WALLPAPER_SCRIPT, [familyKey, mode, url]);
+        setIsLoading(false);
+        await showToast({ style: Toast.Style.Success, title: `Added to ${displayName}`, message: stdout.trim() });
+        onAdded();
+        pop();
+      } catch (err) {
+        setIsLoading(false);
+        const e = err as { message?: string; stderr?: string };
         await showToast({
           style: Toast.Style.Failure,
           title: "Couldn't add wallpaper",
-          message: stderr?.trim() || error.message,
+          message: e.stderr?.trim() || e.message,
         });
-        return;
       }
+      return;
+    }
+
+    // Batch path: one file at a time, in order, so each add sees the
+    // previous one's update to families.json before deriving its own
+    // filename.
+    let added = 0;
+    let lastError = "";
+    for (const [i, filePath] of filePaths.entries()) {
+      const toast = await showToast({
+        style: Toast.Style.Animated,
+        title: `Adding ${i + 1} of ${filePaths.length}...`,
+        message: path.basename(filePath),
+      });
+      try {
+        await execFileAsync(ADD_WALLPAPER_SCRIPT, [familyKey, mode, filePath]);
+        added += 1;
+        await toast.hide();
+      } catch (err) {
+        const e = err as { message?: string; stderr?: string };
+        lastError = e.stderr?.trim() || e.message || "unknown error";
+        toast.style = Toast.Style.Failure;
+        toast.title = `Failed: ${path.basename(filePath)}`;
+        toast.message = lastError;
+      }
+    }
+
+    setIsLoading(false);
+
+    if (added === filePaths.length) {
       await showToast({
         style: Toast.Style.Success,
-        title: `Added to ${displayName}`,
-        message: stdout.trim(),
+        title: `Added ${added} wallpaper${added === 1 ? "" : "s"} to ${displayName}`,
       });
       onAdded();
       pop();
-    });
+    } else if (added > 0) {
+      await showToast({
+        style: Toast.Style.Failure,
+        title: `Added ${added} of ${filePaths.length} -- ${filePaths.length - added} failed`,
+        message: lastError,
+      });
+      onAdded();
+    } else {
+      await showToast({ style: Toast.Style.Failure, title: "Couldn't add any wallpapers", message: lastError });
+    }
   }
 
   return (
@@ -81,11 +131,13 @@ export function AddOwnWallpaper({
         </ActionPanel>
       }
     >
-      <Form.Description text={`Add a wallpaper to ${displayName}'s ${mode} set -- pick a local image OR paste an image URL, not both.`} />
+      <Form.Description
+        text={`Add wallpaper(s) to ${displayName}'s ${mode} set -- pick one or more local images OR paste a single image URL, not both.`}
+      />
       <Form.FilePicker
         id="file"
-        title="Image File"
-        allowMultipleSelection={false}
+        title="Image File(s)"
+        allowMultipleSelection={true}
         canChooseDirectories={false}
         error={fileError}
         onChange={() => setFileError(undefined)}
